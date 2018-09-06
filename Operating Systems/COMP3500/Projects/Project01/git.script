@@ -1,0 +1,70 @@
+Script started on Thu 30 Aug 2018 07:46:23 PM CDT
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[?1034h[thatchdawg@thatchdawg COMP3500]$ git status
+# On branch master
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	deleted:    Projects/Project01/a.out
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	file.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ mkdir exa[K[K[K[K[K[K[K[K[Kgit add file.txt 
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   file.txt
+#
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	deleted:    Projects/Project01/a.out
+#
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ git commit - m[K[Km "Adds a sample file"
+[master e2db79b] Adds a sample file
+ 1 files changed, 79 insertions(+), 0 deletions(-)
+ create mode 100644 file.txt
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ git diff
+[?1h=diff --git a/Projects/Project01/a.out b/Projects/Project01/a.out[m
+deleted file mode 100755[m
+index 7c30917..0000000[m
+Binary files a/Projects/Project01/a.out and /dev/null differ[m
+[K[?1l>]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ git stat[K[K[K[Klog
+[?1h=commit e2db79bae71cca9465a0eac74b49f1cd27eda080[m
+Author: TOR0002 <tor0002@auburn.edu>[m
+Date:   Thu Aug 30 19:46:50 2018 -0500[m
+[m
+    Adds a sample file[m
+[m
+commit f74230d33f267049b7c95d7fe752ea42fef1c7bf[m
+Author: TOR0002 <tor0002@auburn.edu>[m
+Date:   Thu Aug 30 19:37:54 2018 -0500[m
+[m
+    Adds the git.script file which is a typescript detailing git commands.[m
+[m
+commit 760ac12639a4c836df0320b0f461dd5171be7761[m
+Author: TOR0002 <tor0002@auburn.edu>[m
+Date:   Thu Aug 30 19:33:22 2018 -0500[m
+[m
+    simple.c program complete[m
+[m
+commit a69722b2d7c060580f0bf1c78f54c9dfd3171fb5[m
+Author: TOR0002 <tor0002@auburn.edu>[m
+Date:   Thu Aug 30 18:04:06 2018 -0500[m
+[m
+    Working commit of project 01[m
+:[K[Kmark: [K:[K[K[K[?1l>]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ ir [K[K[Kmkdir si[K[Kexaml[K[K[K[K[KcloneTo
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500[thatchdawg@thatchdawg COMP3500]$ cd cloneTo/
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/cloneTo[thatchdawg@thatchdawg cloneTo]$ git clone https://gitlab[K[K[K[K[K[Ktor0002@gitlab.auburn.edu[K[K[K[K[K[K[K[K[K[K[Ke[K.eng.auburn.edu /tor0002/COMP3500
+Initialized empty Git repository in /home/thatchdawg/Desktop/COMP3500/cloneTo/COMP3500/.git/
+warning: You appear to have cloned an empty repository.
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/cloneTo[thatchdawg@thatchdawg cloneTo]$ exit
+exit
+
+Script done on Thu 30 Aug 2018 07:47:47 PM CDT

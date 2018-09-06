@@ -1,0 +1,25 @@
+           CPU0       
+  0:        120   IO-APIC-edge      timer
+  1:       7530   IO-APIC-edge      i8042
+  8:          2   IO-APIC-edge      rtc0
+  9:          0   IO-APIC-fasteoi   acpi
+ 12:        116   IO-APIC-edge      i8042
+ 14:      51737   IO-APIC-edge      ata_piix
+ 15:       8108   IO-APIC-edge      ata_piix
+ 19:     191203   IO-APIC-fasteoi   eth0
+ 21:       8998   IO-APIC-fasteoi   Intel 82801AA-ICH
+ 22:       3467   IO-APIC-fasteoi   ohci_hcd:usb1
+NMI:          0   Non-maskable interrupts
+LOC:     371212   Local timer interrupts
+SPU:          0   Spurious interrupts
+PMI:          0   Performance monitoring interrupts
+IWI:          0   IRQ work interrupts
+RES:          0   Rescheduling interrupts
+CAL:          0   Function call interrupts
+TLB:          0   TLB shootdowns
+TRM:          0   Thermal event interrupts
+THR:          0   Threshold APIC interrupts
+MCE:          0   Machine check exceptions
+MCP:          7   Machine check polls
+ERR:          0
+MIS:          0

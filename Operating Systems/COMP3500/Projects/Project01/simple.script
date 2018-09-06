@@ -1,0 +1,73 @@
+Script started on Thu 30 Aug 2018 08:23:57 PM CDT
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[?1034h[thatchdawg@thatchdawg Project01]$ gcc -v
+Using built-in specs.
+Target: i686-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-languages=c,c++,objc,obj-c++,java,fortran,ada --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch=i686 --build=i686-redhat-linux
+Thread model: posix
+gcc version 4.4.7 20120313 (Red Hat 4.4.7-23) (GCC) 
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ gcc -g -lm -o simple simple.c
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ man la[Kdd
+No manual entry for ldd
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ l[Kman git
+[?1049h[?1h=GIT(1)                            Git Manual                            GIT(1)
+
+[1mNAME[0m
+       git - the stupid content tracker
+
+[1mSYNOPSIS[0m
+       [4mgit[24m [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects]
+           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]
+           [--help] COMMAND [ARGS]
+
+[1mDESCRIPTION[0m
+       Git is a fast, scalable, distributed revision control system with an
+       unusually rich command set that provides both high-level operations and
+       full access to internals.
+
+       See [1mgittutorial[0m(7) to get started, then see [1mEveryday[0m [1mGit[0m[1] for a
+       useful minimum set of commands, and "man git-commandname" for
+       documentation of each command. CVS users may also want to read [1mgitcvs-[0m
+       [1mmigration[0m(7). See the [1mGit[0m [1mUser’s[0m [1mManual[0m[2] for a more in-depth
+       introduction.
+
+       The COMMAND is either a name of a Git command (see below) or an alias
+:[K[K[?1l>[?1049l]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ ldd simple
+	linux-gate.so.1 =>  (0x00460000)
+	libm.so.6 => /lib/libm.so.6 (0x009d7000)
+	libc.so.6 => /lib/libc.so.6 (0x00a88000)
+	/lib/ld-linux.so.2 (0x00479000)
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ gdb
+[?1034hGNU gdb (GDB) Red Hat Enterprise Linux (7.2-92.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "i686-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Breakpoint 1 at 0x8048450: file simple.c, line 15.
+Breakpoint 2 at 0x8048364
+.gdbinit:4: Error in sourced command file:
+The program has no registers now.
+(gdb) r
+Starting program: /home/thatchdawg/Desktop/COMP3500/Projects/Project01/simple 
+
+Breakpoint 1, main () at simple.c:15
+15		double sampleArray[10] = {10, 9, 8, 7, 6, 6, 7, 8, 9, 10};
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.212.el6.i686
+(gdb) n
+16		printf("%lf", avgOfSqrts(sampleArray));
+(gdb) s
+avgOfSqrts (arrayIn=0xbffff240) at simple.c:21
+21		double sum = 0;
+(gdb) c
+Continuing.
+2.817189
+Program exited normally.
+(gdb) quit
+]0;thatchdawg@thatchdawg:~/Desktop/COMP3500/Projects/Project01[thatchdawg@thatchdawg Project01]$ q[Kexit
+exit
+
+Script done on Thu 30 Aug 2018 08:25:16 PM CDT

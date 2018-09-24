@@ -1,0 +1,1709 @@
+Script started on Sat 08 Sep 2018 03:58:07 AM CDT
+]0;thatchdawg@thatchdawg:~/cs161[?1034h[thatchdawg@thatchdawg cs161]$ vim src/ker[K[K[K[K[K[K[K[K[K[K[Kcd src/
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ vim kern/main/main.c 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;43r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[43;1H"kern/main/main.c" 169L, 3544C[>c[1;17H[33mbreak[m;[2;13H[33mdefault[m:[3;17H[33mreturn[m [31mEINVAL[m;[4;9H}[6;9Hshutdown();[8;9H[33mswitch[m (code) {[9;13H[33mcase[m RB_HALT:[10;17Hkprintf([31m"The system is halted.[m[35m\n[m[31m"[m);[11;17Hmd_halt();[12;17H[33mbreak[m;[13;13H[33mcase[m RB_REBOOT:[14;17Hkprintf([31m"Rebooting...[m[35m\n[m[31m"[m);[15;17Hmd_reboot();[16;17H[33mbreak[m;[17;13H[33mcase[m RB_POWEROFF:[18;17Hkprintf([31m"The system is halted.[m[35m\n[m[31m"[m);[19;17Hmd_poweroff();[20;17H[33mbreak[m;[21;9H}[23;9Hpanic([31m"reboot operation failed[m[35m\n[m[31m"[m);[24;9H[33mreturn[m [31m0[m;
+}
+
+[34m/*
+ * Kernel main. Boot up, then fork the menu thread; wait for a reboot
+ * request, and then shut down.
+ */[m
+[32mint[m
+kmain([32mchar[m *arguments)
+[46m{[m[34;9Hboot();[36;9Hhello();[38;9Hmenu(arguments);[40;9H[34m/* Should not get here */[m[41;9H[33mreturn[m [31m0[m;
+[46m}[m[43;108H169,1[9CBot[42;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[33;1H{[42;1H}[43;110H8,1-8[41;8H[?12l[?25h[?25l[43;110H7[40;8H[?12l[?25h[?25l[43;110H6,0-1[39;1H[?12l[?25h[?25l[43;110H5,1-8[38;8H[?12l[?25h[?25l[43;110H4,0-1[37;1H[?12l[?25h[?25l[43;110H3,1-8[36;8H[?12l[?25h[?25l[43;110H2,0-1[35;1H[?12l[?25h[?25l[43;110H1,1-8[34;8H[?12l[?25h[?25l[33;1H[46m{[42;1H}[m[43;110H0,1  [33;1H[?12l[?25h[?25l{[42;1H}[43;109H59[32;1H[?12l[?25h[?25l[43;110H8[31;1H[?12l[?25h[?25l[43;110H7[30;1H[?12l[?25h[?25l[43;110H6[29;1H[?12l[?25h[?25l[43;110H5[28;1H[?12l[?25h[?25l[43;110H4[27;1H[?12l[?25h[?25l[43;110H3,0-1[26;1H[?12l[?25h[?25l[43;110H2,1  [25;1H[?12l[?25h[?25l[43;110H1,1-8[24;8H[?12l[?25h[?25l[43;110H0[23;8H[?12l[?25h[?25l[43;109H49,0-1[22;1H[?12l[?25h[?25l[43;110H8,1-8[21;8H[?12l[?25h[?25l[43;110H7[20;8H[?12l[?25h[?25l[43;110H6[19;8H[?12l[?25h[?25l[43;110H5[18;8H[?12l[?25h[?25l[43;110H4[17;8H[?12l[?25h[?25l[43;110H3[16;8H[?12l[?25h[?25l[43;110H2[15;8H[?12l[?25h[?25l[43;110H1[14;8H[?12l[?25h[?25l[43;110H0[13;8H[?12l[?25h[?25l[43;109H39[12;8H[?12l[?25h[?25l[43;110H8[11;8H[?12l[?25h[?25l[43;110H7[10;8H[?12l[?25h[?25l[43;110H6[9;8H[?12l[?25h[?25l[43;110H5[8;8H[?12l[?25h[?25l[43;110H4,0-1[7;1H[?12l[?25h[?25l[43;110H3,1-8[6;8H[?12l[?25h[?25l[43;110H2,0-1[5;1H[?12l[?25h[?25l[43;110H1,1-8[4;8H[?12l[?25h[?25l[43;110H0[3;8H[?12l[?25h[?25l[43;109H29[2;8H[?12l[?25h[?25l[43;110H8[1;8H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;13H[33mcase[m RB_POWEROFF:[43;1H[K[43;108H127,1-8[7C99%[1;8H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;13H[33mcase[m RB_HALT:[43;108H[K[43;108H126,1-8[7C98%[1;8H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;13H[33mcase[m RB_REBOOT:[43;108H[K[43;108H125,1-8[7C97%[1;8H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;9H[33mswitch[m (code) {[43;108H[K[43;108H124,1-8[7C96%[1;8H[?12l[?25h[?25l[30;42r[30;1H[L[1;43r[1;1H[46m{[m[1;9H[K[2;9H[33mswitch[m (code) {[2;24H[K[3;21HREBOOT:[4;21HHALT:[4;26H[K[5;13H[33mcase[m RB_POWEROFF:[6;13H    [33mbreak[m;[7;13H[33mdefaul[m[1C:[7;21H[K[8;9H [7C[33mreturn[m [31mEINVAL[m;[9;9H}[10;9H[K[11;9Hshutdown();[12;9H[K[13;9H[33mswitch[m (code) {[13;24H[K[14;13H[33mcase[m RB_HALT:[14;26H[K[15;17Hkprintf([31m"The system is halted.[m[35m\n[m[31m"[m);[16;17Hmd_halt();[17;13H    [33mbreak[m;[17;23H[K[18;13H[33mcase[m RB_REBOOT:[18;28H[K[19;17Hkprintf([31m"Rebooting...[m[35m\n[m[31m"[m);[20;17Hmd_reboot();[21;13H    [33mbreak[m;[21;23H[K[22;13H[33mcase[m RB_POWEROFF:[22;30H[K[23;17Hkprintf([31m"The system is halted.[m[35m\n[m[31m"[m);[24;17Hmd_poweroff();[25;9H [7C[33mbreak[m;[26;9H}[27;9H[K[28;9Hpanic([31m"reboot operation failed[m[35m\n[m[31m"[m);
+ [7C[33mreturn[m [31m0[m;
+[46m}[m[43;108H[K[43;108H123,1[9C96%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1Hsys_reboot([32mint[m code)
+{[31;1H}[43;108H[K[43;108H122,1[9C95%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[32mint[m[43;108H[K[43;108H121,1[9C94%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m */[m[43;108H[K[43;108H120,1[9C93%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m * code should probably live in the "userprog" directory.[m[43;108H[K[43;108H119,1[9C92%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m * not because this is where system call code should go. Other syscall[m[43;108H[K[43;108H118,1[9C92%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m * Note: this is here because it's directly related to the code above,[m[43;108H[K[43;108H117,1[9C91%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m *[m[43;108H[K[43;108H116,1[9C90%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m * reboot() system call.[m[43;108H[K[43;108H115,1[9C89%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m/*[m[43;108H[K[43;108H114,1[9C88%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[43;108H[K[43;108H113,0-1[7C88%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H[34m/*****************************************/[m[43;108H[K[43;108H112,1[9C87%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[43;108H[K[43;108H111,0-1[7C86%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;1H}[43;108H[K[43;108H110,1[9C85%[1;1H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;9Hthread_shutdown();[43;108H[K[43;108H109,1-8[7C85%[1;8H[?12l[?25h[?25l[1;42r[1;1H[L[1;43r[1;9Hscheduler_shutdown();[43;108H[K[43;108H108,1-8[7C84%[1;8H[?12l[?25h[?25l[27m[m[H[2J[2;9Hkprintf([31m"Put-your-group-name-here's system version [m[35m%s[m[31m ([m[35m%s[m[31m #[m[35m%d[m[31m)[m[35m\n[m[31m"[m,[3;17HGROUP_VERSION, buildconfig, buildversion);[4;9Hkprintf([31m"[m[35m\n[m[31m"[m);[6;9Hram_bootstrap();[7;9Hscheduler_bootstrap();[8;9Hthread_bootstrap();[9;9Hvfs_bootstrap();[10;9Hdev_bootstrap();[11;9Hvm_bootstrap();[12;9Hkprintf_bootstrap();[14;9H[34m/* Default bootfs - but ignore failure, in case emu0 doesn't exist */[m[15;9Hvfs_setbootfs([31m"emu0"[m);[18;9H[34m/*
+         * Make sure various things aren't screwed up.
+         */[m[21;9Hassert([33msizeof[m(userptr_t)==[33msizeof[m([32mchar[m *));[22;9Hassert([33msizeof[m(*(userptr_t)[31m0[m)==[33msizeof[m([32mchar[m));
+}
+
+[34m/*
+ * Shutdown sequence. Opposite to boot().
+ */[m
+[32mstatic
+void[m
+shutdown([32mvoid[m)
+{[33;9Hkprintf([31m"Shutting down.[m[35m\n[m[31m"[m);[35;9Hvfs_clearbootfs();[36;9Hvfs_clearcurdir();[37;9Hvfs_unmountall();[39;9Hsplhigh();[41;9Hscheduler_shutdown();[42;9Hthread_shutdown();[43;108H109,2-9[7C52%[42;9H[?12l[?25h[?25l[27m[m[H[2J[1;1H[34m */[m
+[32mextern[m [32mconst[m [32mint[m buildversion;
+[32mextern[m [32mconst[m [32mchar[m buildconfig[];
+
+[34m/*
+ * Copyright message for the OS/161 base code.
+ */[m
+[32mstatic[m [32mconst[m [32mchar[m harvard_copyright[] =
+    [31m"Copyright (c) 2000, 2001, 2002, 2003[m[35m\n[m[31m"
+[m    [31m"   President and Fellows of Harvard College.  All rights reserved.[m[35m\n[m[31m"[m;
+
+
+[34m/*
+ * Initial boot sequence.
+ */[m
+[32mstatic
+void[m
+boot([32mvoid[m)
+{[20;9H[34m/*
+         * The order of these is important!
+         * Don't go changing it without thinking about the consequences.
+         *
+         * Among other things, be aware that console output gets
+         * buffered up at first and does not actually appear until
+         * dev_bootstrap() attaches the console device. This can be
+         * remarkably confusing if a bug occurs at this point. So
+         * don't put new code before dev_bootstrap if you don't
+         * absolutely have to.
+         *
+         * Also note that the buffer for this is only 1k. If you
+         * overflow it, the system will crash without printing
+         * anything at all. You can make it larger though (it's in
+         * dev/generic/console.c).
+         */[m[37;9Hkprintf([31m"[m[35m\n[m[31m"[m);[38;9Hkprintf([31m"OS/161 base system version [m[35m%s\n[m[31m"[m, BASE_VERSION);[39;9Hkprintf([31m"[m[35m%s[m[31m"[m, harvard_copyright);[40;9Hkprintf([31m"[m[35m\n[m[31m"[m);[42;9Hkprintf([31m"Put-your-group-name-here's system version [m[35m%s[m[31m ([m[35m%s[m[31m #[m[35m%d[m[31m)[m[35m\n[m[31m"[m,[43;108H69,2-9[8C21%[42;9H[?12l[?25h[?25l[1;42r[1;1H[27L[1;43r[1;1H[34m/*
+ * Main.
+ */[m
+
+[35m#include [m[31m<types.h>[m
+[35m#include [m[31m<kern/errno.h>[m
+[35m#include [m[31m<kern/unistd.h>[m
+[35m#include [m[31m<lib.h>[m
+[35m#include [m[31m<machine/spl.h>[m
+[35m#include [m[31m<test.h>[m
+[35m#include [m[31m<synch.h>[m
+[35m#include [m[31m<thread.h>[m
+[35m#include [m[31m<scheduler.h>[m
+[35m#include [m[31m<dev.h>[m
+[35m#include [m[31m<vfs.h>[m
+[35m#include [m[31m<vm.h>[m
+[35m#include [m[31m<syscall.h>[m
+[35m#include [m[31m<version.h>[m
+
+[34m/*
+ * These two pieces of data are maintained by the makefiles and build system.
+ * buildconfig is the name of the config file the kernel was configured with.
+ * buildversion starts at 1 and is incremented every time you link a kernel. 
+ *
+ * The purpose is not to show off how many kernels you've linked, but
+ * to make it easy to make sure that the kernel you just booted is the
+ * same one you just built.[m[43;108H[K[43;108H29,1[10CTop[29;1H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[43;108H30[30;1H[?12l[?25h[?25l[43;109H1,0-1[31;1H[?12l[?25h[?25l[43;109H2,1  [32;1H[?12l[?25h[?25l[43;109H3[33;1H[?12l[?25h[?25l[43;109H4[34;1H[?12l[?25h[?25l[43;109H5[35;1H[?12l[?25h[?25l[43;109H6[36;1H[?12l[?25h[?25l[43;109H7[37;1H[?12l[?25h[?25l[43;109H8,0-1[38;1H[?12l[?25h[?25l[43;109H7,1  [37;1H[?12l[?25h[?25l[43;109H6[36;1H[?12l[?25h[?25l[43;109H5[35;1H[?12l[?25h[?25l[43;109H4[34;1H[?12l[?25h[?25l[43;109H3[33;1H[?12l[?25h[?25l[43;109H2[32;1H[?12l[?25h[?25l[43;109H1,0-1[31;1H[?12l[?25h[?25l[43;109H0,1  [30;1H[?12l[?25h[?25l[43;108H29[29;1H[?12l[?25h[?25l[43;109H8[28;1H[?12l[?25h[?25l[43;109H7[27;1H[?12l[?25h[?25l[43;109H6[26;1H[?12l[?25h[?25l[43;109H5[25;1H[?12l[?25h[?25l[43;109H4[24;1H[?12l[?25h[?25l[43;109H3[23;1H[?12l[?25h[?25l[43;109H2[22;1H[?12l[?25h[?25l[43;109H1[21;1H[?12l[?25h[?25l[43;109H0[20;1H[?12l[?25h[?25l[43;108H19,0-1[19;1H[?12l[?25h[?25l[43;109H8,1  [18;1H[?12l[?25h[?25l[43;109H7[17;1H[?12l[?25h[?25l[43;109H6[16;1H[?12l[?25h[?25l[43;109H5[15;1H[?12l[?25h[?25l[43;109H4[14;1H[?12l[?25h[?25l[43;109H3[13;1H[?12l[?25h[?25l[43;109H2[12;1H[?12l[?25h[?25l[43;109H1[11;1H[?12l[?25h[?25l[43;109H0[10;1H[?12l[?25h[?25l[43;108H9,1 [9;1H[?12l[?25h[?25l[43;108H8[8;1H[?12l[?25h[?25l[43;108H7[7;1H[?12l[?25h[?25l[43;108H6[6;1H[?12l[?25h[?25l[43;108H5[5;1H[?12l[?25h[?25l[43;108H4,0-1[4;1H[?12l[?25h[?25l[43;108H3,1  [3;1H[?12l[?25h[?25l[43;108H2[2;1H[?12l[?25h[?25l[43;108H3[3;1H[?12l[?25h[?25l[43;1H[1m-- INSERT --[m[43;108H[K[43;108H3,1[11CTop[3;1H[?12l[?25h[?25l[4;42r[4;1H[L[1;43r[3;1H[K[4;1H[34m */[m[43;108H[K[43;108H4,1[11CTop[4;1H[?12l[?25h[?25l[43;108H3[3;1H[?12l[?25h[?25l[34m        [m[43;110H2-9[3;9H[?12l[?25h[?25l[3;1H[K[43;110H1  [3;1H[?12l[?25h[?25l[34m [m[43;110H2[3;2H[?12l[?25h[?25l[34m*[m[43;110H3[3;3H[?12l[?25h[?25l[34m [m[43;110H4[3;4H[?12l[?25h[?25l[34mM[m[43;110H5[3;5H[?12l[?25h[?25l[3;4H[K[43;110H4[3;4H[?12l[?25h[?25l[34mU[m[43;110H5[3;5H[?12l[?25h[?25l[34mp[m[43;110H6[3;6H[?12l[?25h[?25l[34md[m[43;110H7[3;7H[?12l[?25h[?25l[34ma[m[43;110H8[3;8H[?12l[?25h[?25l[34mt[m[43;110H9[3;9H[?12l[?25h[?25l[34me[m[43;110H10[3;10H[?12l[?25h[?25l[34md[m[43;111H1[3;11H[?12l[?25h[?25l[34m [m[43;111H2[3;12H[?12l[?25h[?25l[34mb[m[43;111H3[3;13H[?12l[?25h[?25l[34my[m[43;111H4[3;14H[?12l[?25h[?25l[34m [m[43;111H5[3;15H[?12l[?25h[?25l[34mT[m[43;111H6[3;16H[?12l[?25h[?25l[34mh[m[43;111H7[3;17H[?12l[?25h[?25l[34mj[m[43;111H8[3;18H[?12l[?25h[?25l[34ma[m[43;111H9[3;19H[?12l[?25h[?25l[34mt[m[43;110H20[3;20H[?12l[?25h[?25l[3;19H[K[43;110H19[3;19H[?12l[?25h[?25l[3;18H[K[43;111H8[3;18H[?12l[?25h[?25l[3;17H[K[43;111H7[3;17H[?12l[?25h[?25l[34ma[m[43;111H8[3;18H[?12l[?25h[?25l[34mt[m[43;111H9[3;19H[?12l[?25h[?25l[34mc[m[43;110H20[3;20H[?12l[?25h[?25l[34mh[m[43;111H1[3;21H[?12l[?25h[?25l[34me[m[43;111H2[3;22H[?12l[?25h[?25l[34mr[m[43;111H3[3;23H[?12l[?25h[?25l[34m [m[43;111H4[3;24H[?12l[?25h[?25l[34mR[m[43;111H5[3;25H[?12l[?25h[?25l[34mi[m[43;111H6[3;26H[?12l[?25h[?25l[34mc[m[43;111H7[3;27H[?12l[?25h[?25l[34mk[m[43;111H8[3;28H[?12l[?25h[?25l[34me[m[43;111H9[3;29H[?12l[?25h[?25l[34mr[m[43;110H30[3;30H[?12l[?25h[?25l[34mt[m[43;111H1[3;31H[?12l[?25h[?25l[34ms[m[43;111H2[3;32H[?12l[?25h[?25l[34me[m[43;111H3[3;33H[?12l[?25h[?25l[34mn[m[43;111H4[3;34H[?12l[?25h[43;1H[K[3;33H[?25l[43;108H3,33[10CTop[3;33H[?12l[?25h[?25l[43;108H[K[43;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"kern/main/main.c" 170L, 3578C written
+[?1l>[?12l[?25h[?1049l]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git diff
+[?1h=[1mdiff --git a/kern/main/main.c b/kern/main/main.c[m[m
+[1mindex afd9dc6..f6b1723 100644[m[m
+[1m--- a/kern/main/main.c[m[m
+[1m+++ b/kern/main/main.c[m[m
+[36m@@ -1,5 +1,6 @@[m[m
+ /*[m[m
+  * Main.[m[m
+[32m+[m[32m * Updated by Thatcher Rickertsen[m[m
+  */[m[m
+ [m[m
+ #include <types.h>[m[m
+[K[?1l>]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git add .
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git commit -0[Km "Addsa [K[K a comment with my name to display git abilities"
+[master 67b7570] Adds a comment with my name to display git abilities
+ 1 file changed, 1 insertion(+)
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git commit -m "Adds a comment with my name to display git abilities"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K[1Pdiffvim kern/main/main.c 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;43r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[43;1H"kern/main/main.c" 170L, 3578C[>c[1;1H[34m/*
+ * Main.
+ * Updated by Thatcher Rickertsen
+ */[m
+
+[35m#include [m[31m<types.h>[m
+[35m#include [m[31m<kern/errno.h>[m
+[35m#include [m[31m<kern/unistd.h>[m
+[35m#include [m[31m<lib.h>[m
+[35m#include [m[31m<machine/spl.h>[m
+[35m#include [m[31m<test.h>[m
+[35m#include [m[31m<synch.h>[m
+[35m#include [m[31m<thread.h>[m
+[35m#include [m[31m<scheduler.h>[m
+[35m#include [m[31m<dev.h>[m
+[35m#include [m[31m<vfs.h>[m
+[35m#include [m[31m<vm.h>[m
+[35m#include [m[31m<syscall.h>[m
+[35m#include [m[31m<version.h>[m
+
+[34m/*
+ * These two pieces of data are maintained by the makefiles and build system.
+ * buildconfig is the name of the config file the kernel was configured with.
+ * buildversion starts at 1 and is incremented every time you link a kernel. 
+ *
+ * The purpose is not to show off how many kernels you've linked, but
+ * to make it easy to make sure that the kernel you just booted is the
+ * same one you just built.
+ */[m
+[32mextern[m [32mconst[m [32mint[m buildversion;
+[32mextern[m [32mconst[m [32mchar[m buildconfig[];
+
+[34m/*
+ * Copyright message for the OS/161 base code.
+ */[m
+[32mstatic[m [32mconst[m [32mchar[m harvard_copyright[] =
+    [31m"Copyright (c) 2000, 2001, 2002, 2003[m[35m\n[m[31m"
+[m    [31m"   President and Fellows of Harvard College.  All rights reserved.[m[35m\n[m[31m"[m;
+
+
+[34m/*
+ * Initial boot sequence.[m[43;108H3,2[11CTop[3;2H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[43;108H2[2;2H[?12l[?25h[?25l[43;108H1[1;2H[?12l[?25h[?25l[43;1H100 fewer lines[43;16H[K[1;1H        kprintf([31m"Shutting down.[m[35m\n[m[31m"[m);
+        
+        vfs_clearbootfs();[3;27H[K[4;1H        vfs_clearcurdir();[5;9Hvfs_unmountall();[6;1H[K[7;1H        splhigh();[7;19H[K[8;1H[K[9;1H        scheduler_shutdown();
+        thread_shutdown();
+}[11;2H[K[12;1H[K[13;1H[34m/*****************************************/[m[14;1H[K[15;1H[34m/*[m[15;3H[K[16;1H[34m * reboot() system call.
+ *[m[17;3H[K[18;1H[34m * Note: this is here because it's directly related to the code above,
+ * not because this is where system call code should go. Other syscall
+ * code should probably live in the "userprog" directory.
+ */[m
+[32mint[m[22;4H[K[23;1Hsys_reboot([32mint[m code)[23;21H[K[24;1H{[24;2H[K[25;1H        [33mswitch[m (code) {
+            [33mcase[m RB_REBOOT:[26;28H[K[27;1H            [33mcase[m RB_HALT:[27;26H[K[28;1H            [33mcase[m RB_POWEROFF:
+   [13C[33mbreak[m;
+            [33mdefault[m:[30;21H[K[31;1H                [33mreturn[m [31mEINVAL[m;[31;31H[K[32;9H}[33;1H[K[34;1H        shutdown();[34;20H[K[35;1H[K[36;1H        [33mswitch[m (code) {[36;24H[K[37;5H        [33mcase[m RB_HALT:[37;26H[K[38;5H            kprintf([31m"The system is halted.[m[35m\n[m[31m"[m);[38;52H[K[39;17Hmd_halt();[40;17H[33mbreak[m;
+  [10C[33mcase[m RB_REBOOT:
+                kprintf([31m"Rebooting...[m[35m\n[m[31m"[m);[43;108H1,2-9[9CTop[43;108H[K[43;108H1,2-9[9CTop[1;9H[?12l[?25h[?25l[43;1H[K[43;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"kern/main/main.c" 70L, 1126C written
+[?1l>[?12l[?25h[?1049l]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ ./configure 
+Checking for ranlib... yes
+Checking for <err.h>... yes
+Generating defs.mk.
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ kern/conf/config ASST0
+kern/conf/config: Run me from src/kern/conf
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ cd kern/conf/
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/conf[thatchdawg@thatchdawg conf]$ ./config ASST0
+Configuration ASST0
+Generating files... opt-*.h files.mk defs.mk Makefile autoconf.h autoconf.c
+Configuration in ../compile/ASST0 done
+Remember to make depend
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/conf[thatchdawg@thatchdawg conf]$ cd ../compile/ASST0/
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ make depend
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -M ../../dev/generic/console.c ../../dev/lamebus/emu.c ../../dev/lamebus/lser.c ../../dev/lamebus/lhd.c ../../dev/generic/pseudorand.c ../../dev/generic/random.c ../../dev/lamebus/ltimer.c ../../dev/lamebus/lamebus.c ../../dev/lamebus/lrandom.c ../../dev/generic/beep.c ../../dev/lamebus/ltrace.c ../../dev/generic/rtclock.c ../../dev/lamebus/ltimer_att.c ../../dev/lamebus/con_lser.c ../../dev/lamebus/lhd_att.c ../../dev/lamebus/random_lrandom.c ../../dev/lamebus/rtclock_ltimer.c ../../dev/lamebus/ltrace_att.c ../../dev/lamebus/lser_att.c ../../dev/lamebus/lrandom_att.c ../../dev/lamebus/emu_att.c ../../dev/lamebus/beep_ltimer.c ../../dev/generic/pseudorand_att.c ../../fs/sfs/sfs_vnode.c ../../fs/sfs/sfs_fs.c ../../arch/mips/mips/dumbvm.c ../../fs/sfs/sfs_io.c ../../arch/mips/mips/cache_mips1.S ../../arch/mips/mips/exception.S ../../arch/mips/mips/lamebus_mips.c ../../arch/mips/mips/interrupt.c ../../arch/mips/mips/pcb.c ../../arch/mips/mips/ram.c ../../arch/mips/mips/spl.c ../../arch/mips/mips/start.S ../../arch/mips/mips/switch.S ../../arch/mips/mips/syscall.c ../../arch/mips/mips/threadstart.S ../../arch/mips/mips/trap.c ../../arch/mips/mips/tlb_mips1.S ../../../lib/libc/mips-setjmp.S ../../lib/copyinout.c ../../lib/array.c ../../lib/bitmap.c ../../lib/queue.c ../../lib/kheap.c ../../lib/kprintf.c ../../lib/kgets.c ../../lib/misc.c ../../lib/ntoh.c ../../../lib/libc/__printf.c ../../../lib/libc/snprintf.c ../../../lib/libc/atoi.c ../../../lib/libc/bzero.c ../../../lib/libc/memcpy.c ../../../lib/libc/memmove.c ../../../lib/libc/strcat.c ../../../lib/libc/strchr.c ../../../lib/libc/strcmp.c ../../../lib/libc/strcpy.c ../../../lib/libc/strlen.c ../../../lib/libc/strrchr.c ../../../lib/libc/strtok_r.c ../../dev/init.c ../../fs/vfs/device.c ../../fs/vfs/vfscwd.c ../../fs/vfs/vfslist.c ../../fs/vfs/vfslookup.c ../../fs/vfs/vfspath.c ../../fs/vfs/vnode.c ../../fs/vfs/devnull.c ../../thread/hardclock.c ../../thread/synch.c ../../thread/scheduler.c ../../thread/thread.c ../../main/main.c ../../main/menu.c ../../main/hello.c ../../userprog/loadelf.c ../../userprog/runprogram.c ../../userprog/uio.c ../../test/arraytest.c ../../test/bitmaptest.c ../../test/queuetest.c ../../test/threadtest.c ../../test/tt3.c ../../test/synchtest.c ../../test/malloctest.c ../../test/fstest.c ../../compile/ASST0/autoconf.c > depend.mk
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ make
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../main/main.c
+../../main/main.c:1: error: expected declaration specifiers or ‘...’ before string constant
+../../main/main.c:1: warning: data definition has no type or storage class
+../../main/main.c:1: warning: type defaults to ‘int’ in declaration of ‘kprintf’
+../../main/main.c:3: warning: data definition has no type or storage class
+../../main/main.c:3: warning: type defaults to ‘int’ in declaration of ‘vfs_clearbootfs’
+../../main/main.c:4: warning: data definition has no type or storage class
+../../main/main.c:4: warning: type defaults to ‘int’ in declaration of ‘vfs_clearcurdir’
+../../main/main.c:5: warning: data definition has no type or storage class
+../../main/main.c:5: warning: type defaults to ‘int’ in declaration of ‘vfs_unmountall’
+../../main/main.c:7: warning: data definition has no type or storage class
+../../main/main.c:7: warning: type defaults to ‘int’ in declaration of ‘splhigh’
+../../main/main.c:9: warning: data definition has no type or storage class
+../../main/main.c:9: warning: type defaults to ‘int’ in declaration of ‘scheduler_shutdown’
+../../main/main.c:10: warning: data definition has no type or storage class
+../../main/main.c:10: warning: type defaults to ‘int’ in declaration of ‘thread_shutdown’
+../../main/main.c:11: error: expected identifier or ‘(’ before ‘}’ token
+../../main/main.c: In function ‘sys_reboot’:
+../../main/main.c:26: error: ‘RB_REBOOT’ undeclared (first use in this function)
+../../main/main.c:26: error: (Each undeclared identifier is reported only once
+../../main/main.c:26: error: for each function it appears in.)
+../../main/main.c:27: error: ‘RB_HALT’ undeclared (first use in this function)
+../../main/main.c:28: error: ‘RB_POWEROFF’ undeclared (first use in this function)
+../../main/main.c:31: error: ‘EINVAL’ undeclared (first use in this function)
+../../main/main.c:34: warning: implicit declaration of function ‘shutdown’
+../../main/main.c:39: warning: implicit declaration of function ‘md_halt’
+../../main/main.c:43: warning: implicit declaration of function ‘md_reboot’
+../../main/main.c:47: warning: implicit declaration of function ‘md_poweroff’
+../../main/main.c:51: warning: implicit declaration of function ‘panic’
+../../main/main.c: In function ‘kmain’:
+../../main/main.c:62: warning: implicit declaration of function ‘boot’
+../../main/main.c:64: warning: implicit declaration of function ‘hello’
+../../main/main.c:66: warning: implicit declaration of function ‘menu’
+make: *** [main.o] Error 1
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ :q[K[Kcd ../../../
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ cd kern/main/
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/main[thatchdawg@thatchdawg main]$ ls
+[0m[01;32mhello.c[0m  main.c  menu.c
+[m]0;thatchdawg@thatchdawg:~/cs161/src/kern/main[thatchdawg@thatchdawg main]$ rm main.c 
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/main[thatchdawg@thatchdawg main]$ git checkout main.c[Kc
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/main[thatchdawg@thatchdawg main]$ ls
+[0m[01;32mhello.c[0m  main.c  menu.c
+[m]0;thatchdawg@thatchdawg:~/cs161/src/kern/main[thatchdawg@thatchdawg main]$ cd ../../A[K[K[K[K[K[K[K[K[Kd ../
+]0;thatchdawg@thatchdawg:~/cs161/src/kern[thatchdawg@thatchdawg kern]$ cd compile/ASST0/
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ make depend
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -M ../../dev/generic/console.c ../../dev/lamebus/emu.c ../../dev/lamebus/lser.c ../../dev/lamebus/lhd.c ../../dev/generic/pseudorand.c ../../dev/generic/random.c ../../dev/lamebus/ltimer.c ../../dev/lamebus/lamebus.c ../../dev/lamebus/lrandom.c ../../dev/generic/beep.c ../../dev/lamebus/ltrace.c ../../dev/generic/rtclock.c ../../dev/lamebus/ltimer_att.c ../../dev/lamebus/con_lser.c ../../dev/lamebus/lhd_att.c ../../dev/lamebus/random_lrandom.c ../../dev/lamebus/rtclock_ltimer.c ../../dev/lamebus/ltrace_att.c ../../dev/lamebus/lser_att.c ../../dev/lamebus/lrandom_att.c ../../dev/lamebus/emu_att.c ../../dev/lamebus/beep_ltimer.c ../../dev/generic/pseudorand_att.c ../../fs/sfs/sfs_vnode.c ../../fs/sfs/sfs_fs.c ../../arch/mips/mips/dumbvm.c ../../fs/sfs/sfs_io.c ../../arch/mips/mips/cache_mips1.S ../../arch/mips/mips/exception.S ../../arch/mips/mips/lamebus_mips.c ../../arch/mips/mips/interrupt.c ../../arch/mips/mips/pcb.c ../../arch/mips/mips/ram.c ../../arch/mips/mips/spl.c ../../arch/mips/mips/start.S ../../arch/mips/mips/switch.S ../../arch/mips/mips/syscall.c ../../arch/mips/mips/threadstart.S ../../arch/mips/mips/trap.c ../../arch/mips/mips/tlb_mips1.S ../../../lib/libc/mips-setjmp.S ../../lib/copyinout.c ../../lib/array.c ../../lib/bitmap.c ../../lib/queue.c ../../lib/kheap.c ../../lib/kprintf.c ../../lib/kgets.c ../../lib/misc.c ../../lib/ntoh.c ../../../lib/libc/__printf.c ../../../lib/libc/snprintf.c ../../../lib/libc/atoi.c ../../../lib/libc/bzero.c ../../../lib/libc/memcpy.c ../../../lib/libc/memmove.c ../../../lib/libc/strcat.c ../../../lib/libc/strchr.c ../../../lib/libc/strcmp.c ../../../lib/libc/strcpy.c ../../../lib/libc/strlen.c ../../../lib/libc/strrchr.c ../../../lib/libc/strtok_r.c ../../dev/init.c ../../fs/vfs/device.c ../../fs/vfs/vfscwd.c ../../fs/vfs/vfslist.c ../../fs/vfs/vfslookup.c ../../fs/vfs/vfspath.c ../../fs/vfs/vnode.c ../../fs/vfs/devnull.c ../../thread/hardclock.c ../../thread/synch.c ../../thread/scheduler.c ../../thread/thread.c ../../main/main.c ../../main/menu.c ../../main/hello.c ../../userprog/loadelf.c ../../userprog/runprogram.c ../../userprog/uio.c ../../test/arraytest.c ../../test/bitmaptest.c ../../test/queuetest.c ../../test/threadtest.c ../../test/tt3.c ../../test/synchtest.c ../../test/malloctest.c ../../test/fstest.c ../../compile/ASST0/autoconf.c > depend.mk
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ make [K
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../main/main.c
+../../main/main.c: In function ‘kmain’:
+../../main/main.c:164: warning: implicit declaration of function ‘hello’
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../compile/ASST0/autoconf.c
+../../conf/newvers.sh ASST0
+*** This is ASST0 build #4 ***
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c vers.c
+cs161-ld   -nostdlib -Ttext 0x80001000 -T ../../arch/mips/conf/ldscript -G 0 console.o emu.o lser.o lhd.o pseudorand.o random.o ltimer.o lamebus.o lrandom.o beep.o ltrace.o rtclock.o ltimer_att.o con_lser.o lhd_att.o random_lrandom.o rtclock_ltimer.o ltrace_att.o lser_att.o lrandom_att.o emu_att.o beep_ltimer.o pseudorand_att.o sfs_vnode.o sfs_fs.o dumbvm.o sfs_io.o cache_mips1.o exception.o lamebus_mips.o interrupt.o pcb.o ram.o spl.o start.o switch.o syscall.o threadstart.o trap.o tlb_mips1.o mips-setjmp.o copyinout.o array.o bitmap.o queue.o kheap.o kprintf.o kgets.o misc.o ntoh.o __printf.o snprintf.o atoi.o bzero.o memcpy.o memmove.o strcat.o strchr.o strcmp.o strcpy.o strlen.o strrchr.o strtok_r.o init.o device.o vfscwd.o vfslist.o vfslookup.o vfspath.o vnode.o devnull.o hardclock.o synch.o scheduler.o thread.o main.o menu.o hello.o loadelf.o runprogram.o uio.o arraytest.o bitmaptest.o queuetest.o threadtest.o tt3.o synchtest.o malloctest.o fstest.o autoconf.o vers.o -o kernel
+cs161-size kernel
+   text	   data	    bss	    dec	    hex	filename
+ 160648	    448	   7668	 168764	  2933c	kernel
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ make install
+[ -d /home/thatchdawg/cs161/root ] || mkdir /home/thatchdawg/cs161/root
+cp kernel /home/thatchdawg/cs161/root/kernel-ASST0
+rm -f /home/thatchdawg/cs161/root/kernel
+ln -s kernel-ASST0 /home/thatchdawg/cs161/root/kernel
+]0;thatchdawg@thatchdawg:~/cs161/src/kern/compile/ASST0[thatchdawg@thatchdawg ASST0]$ cd ../../../
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ make
+make includes
+make[1]: Entering directory `/home/thatchdawg/cs161/src'
+(cd kern && make includes)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/kern'
+[ -d /home/thatchdawg/cs161/root/include/kern ] || mkdir -p /home/thatchdawg/cs161/root/include/kern
+[ -d /home/thatchdawg/cs161/root/include/mips ] || mkdir -p /home/thatchdawg/cs161/root/include/mips
+rm -f /home/thatchdawg/cs161/root/include/machine
+ln -s mips /home/thatchdawg/cs161/root/include/machine
+Installing kernel includes...
+Installing machine-dependent includes for mips...
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/kern'
+(cd include && make includes)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/include'
+[ -d /home/thatchdawg/cs161/root/include ] || mkdir -p /home/thatchdawg/cs161/root/include
+[ -d /home/thatchdawg/cs161/root/include/sys ] || mkdir -p /home/thatchdawg/cs161/root/include/sys
+Installing library includes...
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/include'
+(cd lib/hostcompat && make includes)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+[ -d /home/thatchdawg/cs161/root/hostinclude ] || mkdir /home/thatchdawg/cs161/root/hostinclude
+rm -f /home/thatchdawg/cs161/root/hostinclude/kern
+ln -s ../include/kern /home/thatchdawg/cs161/root/hostinclude/kern
+cp hostcompat.h /home/thatchdawg/cs161/root/hostinclude
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+make[1]: Leaving directory `/home/thatchdawg/cs161/src'
+make depend
+make[1]: Entering directory `/home/thatchdawg/cs161/src'
+(cd include && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/include'
+make[2]: Nothing to be done for `depend'.
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/include'
+(cd lib && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/lib'
+(cd crt0 && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/crt0'
+make[3]: `depend' is up to date.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/crt0'
+(cd libc && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/libc'
+make syscalls.S
+make[4]: Entering directory `/home/thatchdawg/cs161/src/lib/libc'
+rm -f syscalls.S syscalls.S.tmp
+echo '/* Automatically generated from syscalls-mips.S */' \
+		> syscalls.S.tmp
+cat syscalls-mips.S >> syscalls.S.tmp
+./callno-parse.sh < ../../kern/include/kern/callno.h >> syscalls.S.tmp
+mv -f syscalls.S.tmp syscalls.S
+make[4]: Leaving directory `/home/thatchdawg/cs161/src/lib/libc'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M __printf.c snprintf.c printf.c atoi.c bzero.c memcmp.c memcpy.c memmove.c memset.c strcat.c strchr.c strcmp.c strcpy.c strlen.c strrchr.c strtok.c strtok_r.c __assert.c __puts.c err.c getchar.c putchar.c puts.c  abort.c errno.c exit.c getcwd.c random.c strerror.c system.c time.c mips-setjmp.S syscalls.S |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/libc'
+(cd hostcompat && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude  -MM err.c time.c hostcompat.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's/\.o/\.ho/' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > dependh.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/lib'
+(cd bin && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/bin'
+(cd true && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/true'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M true.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/true'
+(cd false && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/false'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M false.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/false'
+(cd sync && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sync'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M sync.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sync'
+(cd mkdir && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mkdir'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M mkdir.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mkdir'
+(cd rmdir && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rmdir'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M rmdir.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rmdir'
+(cd pwd && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/pwd'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M pwd.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/pwd'
+(cd cat && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cat'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M cat.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cat'
+(cd cp && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cp'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M cp.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cp'
+(cd ln && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ln'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M ln.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ln'
+(cd mv && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mv'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M mv.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mv'
+(cd rm && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rm'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M rm.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rm'
+(cd ls && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ls'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M ls.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ls'
+(cd sh && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sh'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M sh.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -MM sh.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's/\.o/\.ho/' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp dependh.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sh'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/bin'
+(cd sbin && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/sbin'
+(cd reboot && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/reboot'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M reboot.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/reboot'
+(cd halt && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/halt'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M halt.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/halt'
+(cd poweroff && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M poweroff.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+(cd mksfs && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M mksfs.c disk.c support.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -MM mksfs.c disk.c support.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's/\.o/\.ho/' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp dependh.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+(cd dumpsfs && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M dumpsfs.c disk.c support.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -MM dumpsfs.c disk.c support.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's/\.o/\.ho/' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp dependh.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/sbin'
+(cd testbin && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/testbin'
+(cd add && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/add'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M add.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/add'
+(cd argtest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/argtest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M argtest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/argtest'
+(cd badcall && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/badcall'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M bad_execv.c bad_waitpid.c bad_open.c bad_read.c bad_write.c bad_close.c bad_reboot.c bad_sbrk.c bad_ioctl.c bad_lseek.c bad_fsync.c bad_ftruncate.c bad_stat.c bad_remove.c bad_rename.c bad_link.c bad_mkdir.c bad_rmdir.c bad_chdir.c bad_getdirentry.c bad_symlink.c bad_readlink.c bad_dup2.c bad_pipe.c bad_time.c bad_getcwd.c common_buf.c common_fds.c common_path.c driver.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/badcall'
+(cd bigfile && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M bigfile.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+(cd conman && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/conman'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M conman.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/conman'
+(cd crash && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/crash'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M crash.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/crash'
+(cd ctest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/ctest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M ctest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/ctest'
+(cd dirconc && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M dirconc.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+(cd dirseek && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M dirseek.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+(cd dirtest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M dirtest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+(cd f_test && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/f_test'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M f_test.c f_read.c f_write.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/f_test'
+(cd farm && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/farm'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M farm.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/farm'
+(cd faulter && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/faulter'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M faulter.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/faulter'
+(cd filetest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/filetest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M filetest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/filetest'
+(cd forkbomb && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M forkbomb.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+(cd forktest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forktest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M forktest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forktest'
+(cd guzzle && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M guzzle.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+(cd hash && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hash'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M hash.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -MM hash.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's/\.o/\.ho/' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp dependh.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hash'
+(cd hog && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hog'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M hog.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hog'
+(cd huge && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/huge'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M huge.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/huge'
+(cd kitchen && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M kitchen.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+(cd matmult && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/matmult'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M matmult.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/matmult'
+(cd palin && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/palin'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M palin.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/palin'
+(cd parallelvm && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M parallelvm.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+(cd randcall && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/randcall'
+make calls.c
+make[4]: Entering directory `/home/thatchdawg/cs161/src/testbin/randcall'
+make[4]: `calls.c' is up to date.
+make[4]: Leaving directory `/home/thatchdawg/cs161/src/testbin/randcall'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M calls.c main.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/randcall'
+(cd rmdirtest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M rmdirtest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+(cd rmtest && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M rmtest.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+(cd sink && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sink'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M sink.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sink'
+(cd sort && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sort'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M sort.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sort'
+(cd sty && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sty'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M sty.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sty'
+(cd tail && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tail'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M tail.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tail'
+(cd tictac && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tictac'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M tictac.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tictac'
+(cd triplehuge && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M triplehuge.c triple.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+(cd triplemat && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M triplemat.c triple.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+(cd triplesort && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -M triplesort.c triple.c |\
+	  awk '{x=$0~"^ ";for(i=1;i<=NF;i++){printf "%d %s\n",x,$i;x=1; }}'|\
+	  sed '/1 \\/d' | awk '{ printf "%s%s", $1?" \\\n ":"\n", $2 }' |\
+	  sed 's|/home/thatchdawg/cs161/root|$(OSTREE)|;$p;$x' > .deptmp
+mv -f .deptmp depend.mk
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/testbin'
+(cd man && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/man'
+(cd toplevel && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/toplevel'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/toplevel'
+(cd bin && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/bin'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/bin'
+(cd sbin && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/sbin'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/sbin'
+(cd testbin && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/testbin'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/testbin'
+(cd libc && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/libc'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/libc'
+(cd syscall && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/syscall'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/syscall'
+(cd dev && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/dev'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/dev'
+(cd misc && make depend)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/misc'
+make[3]: Nothing to be done for `depend'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/misc'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/man'
+(cd kern && make depend)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/kern'
+make[2]: Nothing to be done for `depend'.
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/kern'
+make[1]: Leaving directory `/home/thatchdawg/cs161/src'
+make compile
+make[1]: Entering directory `/home/thatchdawg/cs161/src'
+(cd lib && make)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/lib'
+(cd crt0 && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/crt0'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -c mips-crt0.S -o crt0.o
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/crt0'
+(cd libc && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/libc'
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -c mips-setjmp.S
+cs161-gcc  -nostdinc -I/home/thatchdawg/cs161/root/include  -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -O2 -c syscalls.S
+cs161-ar -cruv libc.a __printf.o snprintf.o printf.o atoi.o bzero.o memcmp.o memcpy.o memmove.o memset.o strcat.o strchr.o strcmp.o strcpy.o strlen.o strrchr.o strtok.o strtok_r.o __assert.o __puts.o err.o getchar.o putchar.o puts.o abort.o errno.o exit.o getcwd.o random.o strerror.o system.o time.o mips-setjmp.o syscalls.o
+r - mips-setjmp.o
+r - syscalls.o
+cs161-ranlib libc.a
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/libc'
+(cd hostcompat && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/lib'
+(cd lib && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/lib'
+(cd crt0 && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/crt0'
+[ -d /home/thatchdawg/cs161/root/lib ] || mkdir /home/thatchdawg/cs161/root/lib
+cp crt0.o /home/thatchdawg/cs161/root/lib
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/crt0'
+(cd libc && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/libc'
+[ -d /home/thatchdawg/cs161/root/lib ] || mkdir /home/thatchdawg/cs161/root/lib
+cp libc.a /home/thatchdawg/cs161/root/lib
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/libc'
+(cd hostcompat && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+[ -d /home/thatchdawg/cs161/root/hostlib ] || mkdir /home/thatchdawg/cs161/root/hostlib
+cp libhostcompat.ha /home/thatchdawg/cs161/root/hostlib/libhostcompat.a
+ranlib /home/thatchdawg/cs161/root/hostlib/libhostcompat.a
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/lib/hostcompat'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/lib'
+(cd bin && make)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/bin'
+(cd true && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/true'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   true.o   -lc \
+	   -o true
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/true'
+(cd false && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/false'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   false.o   -lc \
+	   -o false
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/false'
+(cd sync && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sync'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   sync.o   -lc \
+	   -o sync
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sync'
+(cd mkdir && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mkdir'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   mkdir.o   -lc \
+	   -o mkdir
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mkdir'
+(cd rmdir && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rmdir'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   rmdir.o   -lc \
+	   -o rmdir
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rmdir'
+(cd pwd && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/pwd'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   pwd.o   -lc \
+	   -o pwd
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/pwd'
+(cd cat && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cat'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   cat.o   -lc \
+	   -o cat
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cat'
+(cd cp && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cp'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   cp.o   -lc \
+	   -o cp
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cp'
+(cd ln && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ln'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   ln.o   -lc \
+	   -o ln
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ln'
+(cd mv && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mv'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   mv.o   -lc \
+	   -o mv
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mv'
+(cd rm && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rm'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   rm.o   -lc \
+	   -o rm
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rm'
+(cd ls && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ls'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   ls.o   -lc \
+	   -o ls
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ls'
+(cd sh && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sh'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   sh.o   -lc \
+	   -o sh
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -c sh.c -o sh.ho
+gcc   sh.ho   \
+	  /home/thatchdawg/cs161/root/hostlib/libhostcompat.a -o host-sh
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sh'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/bin'
+(cd sbin && make)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/sbin'
+(cd reboot && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/reboot'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   reboot.o   -lc \
+	   -o reboot
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/reboot'
+(cd halt && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/halt'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   halt.o   -lc \
+	   -o halt
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/halt'
+(cd poweroff && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   poweroff.o   -lc \
+	   -o poweroff
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+(cd mksfs && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   mksfs.o disk.o support.o   -lc \
+	   -o mksfs
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -c mksfs.c -o mksfs.ho
+gcc   mksfs.ho disk.ho support.ho   \
+	  /home/thatchdawg/cs161/root/hostlib/libhostcompat.a -o host-mksfs
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+(cd dumpsfs && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   dumpsfs.o disk.o support.o   -lc \
+	   -o dumpsfs
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -c dumpsfs.c -o dumpsfs.ho
+gcc   dumpsfs.ho disk.ho support.ho   \
+	  /home/thatchdawg/cs161/root/hostlib/libhostcompat.a -o host-dumpsfs
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/sbin'
+(cd testbin && make)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/testbin'
+(cd add && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/add'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   add.o   -lc \
+	   -o add
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/add'
+(cd argtest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/argtest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   argtest.o   -lc \
+	   -o argtest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/argtest'
+(cd badcall && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/badcall'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   bad_execv.o bad_waitpid.o bad_open.o bad_read.o bad_write.o bad_close.o bad_reboot.o bad_sbrk.o bad_ioctl.o bad_lseek.o bad_fsync.o bad_ftruncate.o bad_stat.o bad_remove.o bad_rename.o bad_link.o bad_mkdir.o bad_rmdir.o bad_chdir.o bad_getdirentry.o bad_symlink.o bad_readlink.o bad_dup2.o bad_pipe.o bad_time.o bad_getcwd.o common_buf.o common_fds.o common_path.o driver.o   -lc \
+	   -o badcall
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/badcall'
+(cd bigfile && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   bigfile.o   -lc \
+	   -o bigfile
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+(cd conman && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/conman'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   conman.o   -lc \
+	   -o conman
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/conman'
+(cd crash && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/crash'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   crash.o   -lc \
+	   -o crash
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/crash'
+(cd ctest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/ctest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   ctest.o   -lc \
+	   -o ctest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/ctest'
+(cd dirconc && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   dirconc.o   -lc \
+	   -o dirconc
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+(cd dirseek && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   dirseek.o   -lc \
+	   -o dirseek
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+(cd dirtest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   dirtest.o   -lc \
+	   -o dirtest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+(cd f_test && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/f_test'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   f_test.o f_read.o f_write.o   -lc \
+	   -o f_test
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/f_test'
+(cd farm && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/farm'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   farm.o   -lc \
+	   -o farm
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/farm'
+(cd faulter && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/faulter'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   faulter.o   -lc \
+	   -o faulter
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/faulter'
+(cd filetest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/filetest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   filetest.o   -lc \
+	   -o filetest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/filetest'
+(cd forkbomb && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   forkbomb.o   -lc \
+	   -o forkbomb
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+(cd forktest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forktest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   forktest.o   -lc \
+	   -o forktest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forktest'
+(cd guzzle && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   guzzle.o   -lc \
+	   -o guzzle
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+(cd hash && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hash'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   hash.o   -lc \
+	   -o hash
+gcc  -Wall -W -Wwrite-strings -O2 -I/home/thatchdawg/cs161/root/hostinclude -DHOST -c hash.c -o hash.ho
+gcc   hash.ho   \
+	  /home/thatchdawg/cs161/root/hostlib/libhostcompat.a -o host-hash
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hash'
+(cd hog && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hog'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   hog.o   -lc \
+	   -o hog
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hog'
+(cd huge && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/huge'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   huge.o   -lc \
+	   -o huge
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/huge'
+(cd kitchen && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   kitchen.o   -lc \
+	   -o kitchen
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+(cd matmult && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/matmult'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   matmult.o   -lc \
+	   -o matmult
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/matmult'
+(cd palin && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/palin'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   palin.o   -lc \
+	   -o palin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/palin'
+(cd parallelvm && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   parallelvm.o   -lc \
+	   -o parallelvm
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+(cd randcall && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/randcall'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   calls.o main.o   -lc \
+	   -o randcall
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/randcall'
+(cd rmdirtest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   rmdirtest.o   -lc \
+	   -o rmdirtest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+(cd rmtest && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   rmtest.o   -lc \
+	   -o rmtest
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+(cd sink && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sink'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   sink.o   -lc \
+	   -o sink
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sink'
+(cd sort && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sort'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   sort.o   -lc \
+	   -o sort
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sort'
+(cd sty && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sty'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   sty.o   -lc \
+	   -o sty
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sty'
+(cd tail && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tail'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   tail.o   -lc \
+	   -o tail
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tail'
+(cd tictac && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tictac'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   tictac.o   -lc \
+	   -o tictac
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tictac'
+(cd triplehuge && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   triplehuge.o triple.o   -lc \
+	   -o triplehuge
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+(cd triplemat && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   triplemat.o triple.o   -lc \
+	   -o triplemat
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+(cd triplesort && make all)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+cs161-gcc -nostdlib -L/home/thatchdawg/cs161/root/lib /home/thatchdawg/cs161/root/lib/crt0.o   triplesort.o triple.o   -lc \
+	   -o triplesort
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/testbin'
+(cd bin && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/bin'
+(cd true && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/true'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp true /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/true'
+(cd false && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/false'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp false /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/false'
+(cd sync && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sync'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp sync /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sync'
+(cd mkdir && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mkdir'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp mkdir /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mkdir'
+(cd rmdir && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rmdir'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp rmdir /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rmdir'
+(cd pwd && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/pwd'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp pwd /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/pwd'
+(cd cat && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cat'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp cat /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cat'
+(cd cp && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/cp'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp cp /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/cp'
+(cd ln && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ln'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp ln /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ln'
+(cd mv && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/mv'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp mv /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/mv'
+(cd rm && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/rm'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp rm /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/rm'
+(cd ls && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/ls'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp ls /home/thatchdawg/cs161/root/bin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/ls'
+(cd sh && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/bin/sh'
+[ -d /home/thatchdawg/cs161/root/bin ] || mkdir /home/thatchdawg/cs161/root/bin
+cp sh /home/thatchdawg/cs161/root/bin
+[ -d /home/thatchdawg/cs161/root/hostbin ] || mkdir /home/thatchdawg/cs161/root/hostbin
+cp host-sh /home/thatchdawg/cs161/root/hostbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/bin/sh'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/bin'
+(cd sbin && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/sbin'
+(cd reboot && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/reboot'
+[ -d /home/thatchdawg/cs161/root/sbin ] || mkdir /home/thatchdawg/cs161/root/sbin
+cp reboot /home/thatchdawg/cs161/root/sbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/reboot'
+(cd halt && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/halt'
+[ -d /home/thatchdawg/cs161/root/sbin ] || mkdir /home/thatchdawg/cs161/root/sbin
+cp halt /home/thatchdawg/cs161/root/sbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/halt'
+(cd poweroff && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+[ -d /home/thatchdawg/cs161/root/sbin ] || mkdir /home/thatchdawg/cs161/root/sbin
+cp poweroff /home/thatchdawg/cs161/root/sbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/poweroff'
+(cd mksfs && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+[ -d /home/thatchdawg/cs161/root/sbin ] || mkdir /home/thatchdawg/cs161/root/sbin
+cp mksfs /home/thatchdawg/cs161/root/sbin
+[ -d /home/thatchdawg/cs161/root/hostbin ] || mkdir /home/thatchdawg/cs161/root/hostbin
+cp host-mksfs /home/thatchdawg/cs161/root/hostbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/mksfs'
+(cd dumpsfs && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+[ -d /home/thatchdawg/cs161/root/sbin ] || mkdir /home/thatchdawg/cs161/root/sbin
+cp dumpsfs /home/thatchdawg/cs161/root/sbin
+[ -d /home/thatchdawg/cs161/root/hostbin ] || mkdir /home/thatchdawg/cs161/root/hostbin
+cp host-dumpsfs /home/thatchdawg/cs161/root/hostbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/sbin/dumpsfs'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/sbin'
+(cd testbin && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/testbin'
+(cd add && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/add'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp add /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/add'
+(cd argtest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/argtest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp argtest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/argtest'
+(cd badcall && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/badcall'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp badcall /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/badcall'
+(cd bigfile && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp bigfile /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/bigfile'
+(cd conman && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/conman'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp conman /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/conman'
+(cd crash && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/crash'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp crash /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/crash'
+(cd ctest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/ctest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp ctest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/ctest'
+(cd dirconc && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp dirconc /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirconc'
+(cd dirseek && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp dirseek /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirseek'
+(cd dirtest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp dirtest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/dirtest'
+(cd f_test && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/f_test'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp f_test /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/f_test'
+(cd farm && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/farm'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp farm /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/farm'
+(cd faulter && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/faulter'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp faulter /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/faulter'
+(cd filetest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/filetest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp filetest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/filetest'
+(cd forkbomb && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp forkbomb /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forkbomb'
+(cd forktest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/forktest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp forktest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/forktest'
+(cd guzzle && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp guzzle /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/guzzle'
+(cd hash && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hash'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp hash /home/thatchdawg/cs161/root/testbin
+[ -d /home/thatchdawg/cs161/root/hostbin ] || mkdir /home/thatchdawg/cs161/root/hostbin
+cp host-hash /home/thatchdawg/cs161/root/hostbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hash'
+(cd hog && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/hog'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp hog /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/hog'
+(cd huge && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/huge'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp huge /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/huge'
+(cd kitchen && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp kitchen /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/kitchen'
+(cd matmult && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/matmult'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp matmult /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/matmult'
+(cd palin && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/palin'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp palin /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/palin'
+(cd parallelvm && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp parallelvm /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/parallelvm'
+(cd randcall && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/randcall'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp randcall /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/randcall'
+(cd rmdirtest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp rmdirtest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmdirtest'
+(cd rmtest && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp rmtest /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/rmtest'
+(cd sink && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sink'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp sink /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sink'
+(cd sort && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sort'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp sort /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sort'
+(cd sty && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/sty'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp sty /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/sty'
+(cd tail && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tail'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp tail /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tail'
+(cd tictac && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/tictac'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp tictac /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/tictac'
+(cd triplehuge && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp triplehuge /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplehuge'
+(cd triplemat && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp triplemat /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplemat'
+(cd triplesort && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+[ -d /home/thatchdawg/cs161/root/testbin ] || mkdir /home/thatchdawg/cs161/root/testbin
+cp triplesort /home/thatchdawg/cs161/root/testbin
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/testbin/triplesort'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/testbin'
+(cd man && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/man'
+(cd toplevel && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/toplevel'
+[ -d /home/thatchdawg/cs161/root/man ] || mkdir /home/thatchdawg/cs161/root/man
+chmod a+rx /home/thatchdawg/cs161/root/man
+cp *.html /home/thatchdawg/cs161/root/man
+chmod a+r /home/thatchdawg/cs161/root/man/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/toplevel'
+(cd bin && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/bin'
+[ -d /home/thatchdawg/cs161/root/man/bin ] || mkdir /home/thatchdawg/cs161/root/man/bin
+chmod a+rx /home/thatchdawg/cs161/root/man/bin
+cp *.html /home/thatchdawg/cs161/root/man/bin
+chmod a+r /home/thatchdawg/cs161/root/man/bin/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/bin'
+(cd sbin && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/sbin'
+[ -d /home/thatchdawg/cs161/root/man/sbin ] || mkdir /home/thatchdawg/cs161/root/man/sbin
+chmod a+rx /home/thatchdawg/cs161/root/man/sbin
+cp *.html /home/thatchdawg/cs161/root/man/sbin
+chmod a+r /home/thatchdawg/cs161/root/man/sbin/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/sbin'
+(cd testbin && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/testbin'
+[ -d /home/thatchdawg/cs161/root/man/testbin ] || mkdir /home/thatchdawg/cs161/root/man/testbin
+chmod a+rx /home/thatchdawg/cs161/root/man/testbin
+cp *.html /home/thatchdawg/cs161/root/man/testbin
+chmod a+r /home/thatchdawg/cs161/root/man/testbin/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/testbin'
+(cd libc && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/libc'
+[ -d /home/thatchdawg/cs161/root/man/libc ] || mkdir /home/thatchdawg/cs161/root/man/libc
+chmod a+rx /home/thatchdawg/cs161/root/man/libc
+cp *.html /home/thatchdawg/cs161/root/man/libc
+chmod a+r /home/thatchdawg/cs161/root/man/libc/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/libc'
+(cd syscall && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/syscall'
+[ -d /home/thatchdawg/cs161/root/man/syscall ] || mkdir /home/thatchdawg/cs161/root/man/syscall
+chmod a+rx /home/thatchdawg/cs161/root/man/syscall
+cp *.html /home/thatchdawg/cs161/root/man/syscall
+chmod a+r /home/thatchdawg/cs161/root/man/syscall/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/syscall'
+(cd dev && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/dev'
+[ -d /home/thatchdawg/cs161/root/man/dev ] || mkdir /home/thatchdawg/cs161/root/man/dev
+chmod a+rx /home/thatchdawg/cs161/root/man/dev
+cp *.html /home/thatchdawg/cs161/root/man/dev
+chmod a+r /home/thatchdawg/cs161/root/man/dev/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/dev'
+(cd misc && make install)
+make[3]: Entering directory `/home/thatchdawg/cs161/src/man/misc'
+[ -d /home/thatchdawg/cs161/root/man/misc ] || mkdir /home/thatchdawg/cs161/root/man/misc
+chmod a+rx /home/thatchdawg/cs161/root/man/misc
+cp *.html /home/thatchdawg/cs161/root/man/misc
+chmod a+r /home/thatchdawg/cs161/root/man/misc/*.html
+make[3]: Leaving directory `/home/thatchdawg/cs161/src/man/misc'
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/man'
+(cd kern && make)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/kern'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/kern'
+(cd kern && make install)
+make[2]: Entering directory `/home/thatchdawg/cs161/src/kern'
+make[2]: Nothing to be done for `install'.
+make[2]: Leaving directory `/home/thatchdawg/cs161/src/kern'
+make[1]: Leaving directory `/home/thatchdawg/cs161/src'
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git diff
+[?1h=[1mdiff --git a/kern/fs/sfs/sfs_fs.c b/kern/fs/sfs/sfs_fs.c[m[m
+[1mindex 9a5bb46..1cdb650 100644[m[m
+[1m--- a/kern/fs/sfs/sfs_fs.c[m[m
+[1m+++ b/kern/fs/sfs/sfs_fs.c[m[m
+[36m@@ -40,12 +40,13 @@[m [mstatic[m[m
+ int[m[m
+ sfs_mapio(struct sfs_fs *sfs, enum uio_rw rw)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_SFS, "Entering the sfs_mapio operation\n");[m[m
+        u_int32_t j, mapsize;[m[m
+        char *bitdata;[m[m
+        int result;[m[m
+ [m[m
+        /* Number of blocks in the bitmap. */[m[m
+[31m-       mapsize = SFS_FS_BITBLOCKS(sfs);[m[m
+[32m+[m       [32mmapsize = SFS_FS_BITBLOCKS(sfs);[m[41m        [m[m
+ [m[m
+        /* Pointer to our bitmap data in memory. */[m[m
+        bitdata = bitmap_getdata(sfs->sfs_freemap);[m[m
+[36m@@ -66,6 +67,8 @@[m [msfs_mapio(struct sfs_fs *sfs, enum uio_rw rw)[m[m
+ [m[m
+                /* If we failed, stop. */[m[m
+                if (result) {[m[m
+[32m+[m                       [32mDEBUG(DB_SFS, "Failed to continue reading or writting. Stopping map operation\n"[m[m
+[32m+[m                       [32mDEBUG(DB_SFS, "The result was: %u\n", result);[m[41m [m[m
+                        return result;[m[m
+                }[m[m
+        }[m[m
+[36m@@ -81,6 +84,7 @@[m [mstatic[m[m
+ int[m[m
+ sfs_sync(struct fs *fs)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_SFS, "Attempting to sync the sfs...\n");[m[m
+        struct sfs_fs *sfs; [m[m
+        int i, num, result;[m[m
+ [m[m
+[1mdiff --git a/kern/fs/vfs/device.c b/kern/fs/vfs/device.c[m[m
+[1mindex 869aca5..315cd98 100644[m[m
+[1m--- a/kern/fs/vfs/device.c[m[m
+[1m+++ b/kern/fs/vfs/device.c[m[m
+[36m@@ -23,9 +23,11 @@[m [mstatic[m[m
+ int[m[m
+:[K[K [KESCESC[KOO[KBB[K dev_open(struct vnode *v, int flags)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_VFS, "Performing open operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        struct device *d = v->vn_data;[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K        if (flags & (O_CREAT | O_TRUNC | O_EXCL | O_APPEND)) {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m               [32mDEBUG(DB_VFS, "Unable to perform open operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K                return EINVAL;[m[m
+:[K[K [KESCESC[KOO[KBB[K        }[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -40,6 +42,7 @@[m [mstatic[m[m
+:[K[K [KESCESC[KOO[KBB[K int[m[m
+:[K[K [KESCESC[KOO[KBB[K dev_close(struct vnode *v)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_VFS, "Performing close operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        struct device *d = v->vn_data;[m[m
+:[K[K [KESCESC[KOO[KBB[K        return d->d_close(d);[m[m
+:[K[K [KESCESC[KOO[KBB[K }[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/thread/scheduler.c b/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex 795f292..156ea56 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -41,6 +41,7 @@[m [mscheduler_bootstrap(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K int[m[m
+:[K[K [KESCESC[KOO[KBB[K scheduler_preallocate(int nthreads)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Attempting to preallocate for the following runqueue: %u\n", runqueue);[m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K        return q_preallocate(runqueue, nthreads);[m[m
+:[K[K [KESCESC[KOO[KBB[K }[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -54,6 +55,7 @@[m [mscheduler_preallocate(int nthreads)[m[m
+:[K[K [KESCESC[KOO[KBB[K void[m[m
+:[K[K [KESCESC[KOO[KBB[K scheduler_killall(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Killing all threads!\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K        while (!q_empty(runqueue)) {[m[m
+:[K[K [KESCESC[KOO[KBB[K                struct thread *t = q_remhead(runqueue);[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/thread/thread.c b/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex d08f473..b3b3e5e 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -101,6 +101,7 @@[m [mstatic[m[m
+:[K[K [KESCESC[KOO[KBB[K void[m[m
+:[K[K [KESCESC[KOO[KBB[K exorcise(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Killing zombies... or threads with state = %u\n", S_ZOMB);[m[m
+:[K[K [KESCESC[KOO[KBB[K        int i, result;[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KESCESC[K[7m(END) [27m[K[K[K[7m(END) [27m[K[K[K[7m(END) [27m[K[K[?1l>]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git[Kt st[K[Kadd .
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git commit -m "Project 2"
+[master 7b2af7e] Project 2
+ 5 files changed, 11 insertions(+), 1 deletion(-)
+ create mode 100644 kern/include/.lib.h.swp
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git tag asst0-end
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git tag
+[?1h=asst0-end[m
+[K[?1l>]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git show
+[?1h=[33mcommit 7b2af7ea6775397de6abede66fae0655abb03e9e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;33mtag: asst0-end[m[33m)[m[m
+Author: tor0002 <tor0002@auburn.edu>[m
+Date:   Sat Sep 8 04:32:15 2018 -0500[m
+[m
+    Project 2[m
+[m
+[1mdiff --git a/kern/fs/sfs/sfs_fs.c b/kern/fs/sfs/sfs_fs.c[m[m
+[1mindex 9a5bb46..1cdb650 100644[m[m
+[1m--- a/kern/fs/sfs/sfs_fs.c[m[m
+[1m+++ b/kern/fs/sfs/sfs_fs.c[m[m
+[36m@@ -40,12 +40,13 @@[m [mstatic[m[m
+ int[m[m
+ sfs_mapio(struct sfs_fs *sfs, enum uio_rw rw)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_SFS, "Entering the sfs_mapio operation\n");[m[m
+        u_int32_t j, mapsize;[m[m
+        char *bitdata;[m[m
+        int result;[m[m
+ [m[m
+        /* Number of blocks in the bitmap. */[m[m
+[31m-       mapsize = SFS_FS_BITBLOCKS(sfs);[m[m
+[32m+[m       [32mmapsize = SFS_FS_BITBLOCKS(sfs);[m[41m        [m[m
+ [m[m
+        /* Pointer to our bitmap data in memory. */[m[m
+        bitdata = bitmap_getdata(sfs->sfs_freemap);[m[m
+[36m@@ -66,6 +67,8 @@[m [msfs_mapio(struct sfs_fs *sfs, enum uio_rw rw)[m[m
+ [m[m
+                /* If we failed, stop. */[m[m
+                if (result) {[m[m
+[32m+[m                       [32mDEBUG(DB_SFS, "Failed to continue reading or writting. Stopping map operation\n"[m[m
+[32m+[m                       [32mDEBUG(DB_SFS, "The result was: %u\n", result);[m[41m [m[m
+                        return result;[m[m
+                }[m[m
+        }[m[m
+[36m@@ -81,6 +84,7 @@[m [mstatic[m[m
+ int[m[m
+ sfs_sync(struct fs *fs)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_SFS, "Attempting to sync the sfs...\n");[m[m
+        struct sfs_fs *sfs; [m[m
+        int i, num, result;[m[m
+ [m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/fs/vfs/device.c b/kern/fs/vfs/device.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex 869aca5..315cd98 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/fs/vfs/device.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/fs/vfs/device.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -23,9 +23,11 @@[m [mstatic[m[m
+:[K[K [KESCESC[KOO[KBB[K int[m[m
+:[K[K [KESCESC[KOO[KBB[K dev_open(struct vnode *v, int flags)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_VFS, "Performing open operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        struct device *d = v->vn_data;[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K        if (flags & (O_CREAT | O_TRUNC | O_EXCL | O_APPEND)) {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m               [32mDEBUG(DB_VFS, "Unable to perform open operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K                return EINVAL;[m[m
+:[K[K [KESCESC[KOO[KBB[K        }[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -40,6 +42,7 @@[m [mstatic[m[m
+:[K[K [KESCESC[KOO[KBB[K int[m[m
+:[K[K [KESCESC[KOO[KBB[K dev_close(struct vnode *v)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_VFS, "Performing close operation on VFS\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        struct device *d = v->vn_data;[m[m
+:[K[K [KESCESC[KOO[KBB[K        return d->d_close(d);[m[m
+:[K[K [KESCESC[KOO[KBB[K }[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/include/.lib.h.swp b/kern/include/.lib.h.swp[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mnew file mode 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex 0000000..710944c[m[m
+:[K[K [KESCESC[KOO[KBB[KBinary files /dev/null and b/kern/include/.lib.h.swp differ[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/thread/scheduler.c b/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex 795f292..156ea56 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/thread/scheduler.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -41,6 +41,7 @@[m [mscheduler_bootstrap(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K int[m[m
+:[K[K [KESCESC[KOO[KBB[K scheduler_preallocate(int nthreads)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Attempting to preallocate for the following runqueue: %u\n", runqueue);[m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K        return q_preallocate(runqueue, nthreads);[m[m
+:[K[K [KESCESC[KOO[KBB[K }[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -54,6 +55,7 @@[m [mscheduler_preallocate(int nthreads)[m[m
+:[K[K [KESCESC[KOO[KBB[K void[m[m
+:[K[K [KESCESC[KOO[KBB[K scheduler_killall(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Killing all threads!\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K        while (!q_empty(runqueue)) {[m[m
+:[K[K [KESCESC[KOO[KBB[K                struct thread *t = q_remhead(runqueue);[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/thread/thread.c b/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex d08f473..b3b3e5e 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/thread/thread.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -101,6 +101,7 @@[m [mstatic[m[m
+:[K[K [KESCESC[KOO[KBB[K void[m[m
+:[K[K [KESCESC[KOO[KBB[K exorcise(void)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Killing zombies... or threads with state = %u\n", S_ZOMB);[m[m
+:[K[K [KESCESC[KOO[KBB[K        int i, result;[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(curspl>0);[m[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K[?1l>]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git push --tags
+Enumerating objects: 24, done.
+Counting objects:   4% (1/24)   Counting objects:   8% (2/24)   Counting objects:  12% (3/24)   Counting objects:  16% (4/24)   Counting objects:  20% (5/24)   Counting objects:  25% (6/24)   Counting objects:  29% (7/24)   Counting objects:  33% (8/24)   Counting objects:  37% (9/24)   Counting objects:  41% (10/24)   Counting objects:  45% (11/24)   Counting objects:  50% (12/24)   Counting objects:  54% (13/24)   Counting objects:  58% (14/24)   Counting objects:  62% (15/24)   Counting objects:  66% (16/24)   Counting objects:  70% (17/24)   Counting objects:  75% (18/24)   Counting objects:  79% (19/24)   Counting objects:  83% (20/24)   Counting objects:  87% (21/24)   Counting objects:  91% (22/24)   Counting objects:  95% (23/24)   Counting objects: 100% (24/24)   Counting objects: 100% (24/24), done.
+Compressing objects:   7% (1/13)   Compressing objects:  15% (2/13)   Compressing objects:  23% (3/13)   Compressing objects:  30% (4/13)   Compressing objects:  38% (5/13)   Compressing objects:  46% (6/13)   Compressing objects:  53% (7/13)   Compressing objects:  61% (8/13)   Compressing objects:  69% (9/13)   Compressing objects:  76% (10/13)   Compressing objects:  84% (11/13)   Compressing objects:  92% (12/13)   Compressing objects: 100% (13/13)   Compressing objects: 100% (13/13), done.
+Writing objects:   7% (1/13)   Writing objects:  15% (2/13)   Writing objects:  23% (3/13)   Writing objects:  30% (4/13)   Writing objects:  38% (5/13)   Writing objects:  46% (6/13)   Writing objects:  53% (7/13)   Writing objects:  61% (8/13)   Writing objects:  69% (9/13)   Writing objects:  76% (10/13)   Writing objects:  84% (11/13)   Writing objects:  92% (12/13)   Writing objects: 100% (13/13)   Writing objects: 100% (13/13), 4.57 KiB | 2.28 MiB/s, done.
+Total 13 (delta 9), reused 0 (delta 0)
+To https://gitlab.eng.auburn.edu/tor0002/os161.git
+ * [new tag]         asst0-end -> asst0-end
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ git archive -o ../asst0/.[Kproject2_source.tgz HEAD
+]0;thatchdawg@thatchdawg:~/cs161/src[thatchdawg@thatchdawg src]$ cd ../
+]0;thatchdawg@thatchdawg:~/cs161[thatchdawg@thatchdawg cs161]$ tar vfcza[K asst0.tgz asst0/
+asst0/
+asst0/newbuild.script
+asst0/project2_source.tgz
+asst0/code-reading.txt
+asst0/setup.script
+asst0/build.script
+asst0/gdb.script
+asst0/run.script
+asst0/gitinit.script
+]0;thatchdawg@thatchdawg:~/cs161[thatchdawg@thatchdawg cs161]$ exit
+exit
+
+Script done on Sat 08 Sep 2018 04:34:01 AM CDT
